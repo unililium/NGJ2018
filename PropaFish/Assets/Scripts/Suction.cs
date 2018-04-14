@@ -30,6 +30,7 @@ public class Suction : MonoBehaviour {
         {
             if (Input.GetKeyDown(suctionKey))
             {
+                Debug.Log("Suction key pressed");
                 EatAFish();
             }
         }
@@ -43,30 +44,40 @@ public class Suction : MonoBehaviour {
         }
     }
 
-    public void EatAFish() {
-        smallFish = GameObject.FindGameObjectsWithTag("smallFish");
-
-        foreach (GameObject fish in smallFish) {
-            if(fish.GetComponent<Prone>().insideSuctionRange == true) {                
-                GameObject orb = Instantiate(sphereTravelPrefab, animSpawnPos.position, animSpawnPos.rotation, gameObject.transform.parent);
-                EatFoodScript eatenFishStats = fish.GetComponent<EatFoodScript>();
-                float energyEaten = eatenFishStats ? eatenFishStats.Energy : 0f;
-                orb.GetComponent<FoodAnimScript>().StartFoodAnim(this, energyEaten);
-                Destroy(fish);
+    public void EatAFish() {        
+        foreach (GameObject fish in Prone.GetSuckables()) {
+            float energyEaten = 0f;
+            EatFoodScript eatenFishStats = fish.GetComponent<EatFoodScript>();
+            Nutrient otherNutrientStats = fish.GetComponent<Nutrient>();
+            if (eatenFishStats)
+            {
+                energyEaten = eatenFishStats ? eatenFishStats.Energy : 0f;
             }
+            else if (otherNutrientStats)
+            {
+                energyEaten = otherNutrientStats.energy;
+            }
+            if (energyEaten > 0f) {
+                GameObject orb = Instantiate(sphereTravelPrefab, animSpawnPos.position, animSpawnPos.rotation, gameObject.transform.parent);                
+                orb.GetComponent<FoodAnimScript>().StartFoodAnim(this, energyEaten);
+            }
+            Destroy(fish); // or whatever object with Prone but containing no energy it may be...
         }
-
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "smallFish") {
-            other.gameObject.GetComponent<Prone>().insideSuctionRange = true;
+        Prone prone = other.gameObject.GetComponent<Prone>();
+        if (prone)
+        {
+            prone.insideSuctionRange = true;
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if(other.gameObject.tag == "smallFish") {
-            other.gameObject.GetComponent<Prone>().insideSuctionRange = false;
+        Prone prone = other.gameObject.GetComponent<Prone>();
+        if (prone)
+        {
+            prone.insideSuctionRange = false;
         }
     }
 
