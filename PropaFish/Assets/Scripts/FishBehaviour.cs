@@ -10,7 +10,8 @@ public class FishBehaviour : MonoBehaviour {
 	private Vector3 currentAngle;
 	private Vector3 targetAngle = new Vector3(0f, 180f, 0f);
 	private ConstantForce constForce;
-	public bool turning = false;
+	public bool turningR = false;
+	public bool turningL = false;
 	private Quaternion previousRotation; 
 
 	void Start () {
@@ -18,16 +19,23 @@ public class FishBehaviour : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
-		if(turning) {
-			Turn();
-			if(transform.rotation == GetOppositeRotation(previousRotation)) turning = false; 
+		if(turningR) {
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,180,0), 10 * Time.deltaTime);
+			if(transform.rotation == GetOppositeRotation(previousRotation)) {
+				turningR = false; 
+			}
+		} else if(turningL) {
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0,0), 10 * Time.deltaTime);
+			if(transform.rotation == GetOppositeRotation(previousRotation)) {
+				turningL = false; 
+			}
 		} else {
 			Move();
 		}
 	}
 
     void Turn() {
-        transform.rotation = Quaternion.Slerp(transform.rotation, GetOppositeRotation(transform.rotation), 10 * Time.deltaTime);
+        
 	}
 
 	void Move() {
@@ -46,8 +54,13 @@ public class FishBehaviour : MonoBehaviour {
 		return result; 
 	}
 
-	void OnTriggerEnter(Collider other) {
+	void OnTriggerEnter(Collider collider) {
 		previousRotation = transform.rotation;
-		turning = true;
+		if(collider.tag == "wallR")
+     	{
+			turningR = true;
+		} else if(collider.tag == "wallL") {
+			turningL = true;
+		}
 	}
 }
