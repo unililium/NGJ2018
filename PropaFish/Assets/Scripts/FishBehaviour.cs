@@ -21,22 +21,18 @@ public class FishBehaviour : MonoBehaviour {
 	void FixedUpdate () {
 		if(turningR) {
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,180,0), 10 * Time.deltaTime);
-			if(transform.rotation == GetOppositeRotation(previousRotation)) {
-				turningR = false; 
-			}
 		} else if(turningL) {
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0,0), 10 * Time.deltaTime);
-			if(transform.rotation == GetOppositeRotation(previousRotation)) {
-				turningL = false; 
-			}
 		} else {
 			Move();
 		}
 	}
 
-    void Turn() {
-        
-	}
+    IEnumerator TurningWait() {
+        yield return new WaitForSeconds(0.5f);
+        turningL = false;
+		turningR = false;
+    }
 
 	void Move() {
 		transform.position += speed * transform.right * Time.fixedDeltaTime;
@@ -56,10 +52,10 @@ public class FishBehaviour : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collider) {
 		if(collider.tag == "WallR") {
-			Debug.Log("wallleee");
 			turningR = true;
 		} else if(collider.tag == "WallL") {
 			turningL = true;
 		}
+		StartCoroutine(TurningWait());
 	}
 }
