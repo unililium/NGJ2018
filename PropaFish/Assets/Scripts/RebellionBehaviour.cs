@@ -18,6 +18,7 @@ public class RebellionBehaviour : MonoBehaviour {
 	private Quaternion savedRot;
 
 	void Update() {
+		// Rebellion start condition
 		if(Input.GetButtonDown("Fire1") && timeStamp <= Time.time) {
 			timeStamp = Time.time + cooldown;
 			rebellionStarted = true;
@@ -36,7 +37,6 @@ public class RebellionBehaviour : MonoBehaviour {
 			else Move();
 			
 		} else if(rebellionStop) {
-			
 			if(turning) {
 				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0,270), turnSpeed * Time.deltaTime);
 				StartCoroutine(TurningWait());
@@ -46,8 +46,14 @@ public class RebellionBehaviour : MonoBehaviour {
 			if(transform.position == savedPos) {	
 				transform.rotation = Quaternion.Slerp(transform.rotation, savedRot, turnSpeed * 3 * Time.deltaTime);
 				StartCoroutine(RebellionEnd());
-			}			
+			}
 		}
+	}
+
+	public void DiveDown() {
+		rebellionStarted = false;
+		rebellionStop = true;
+		turning = true;
 	}
 
 	void Move() {
