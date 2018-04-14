@@ -8,7 +8,6 @@ public class GuardianFish : MonoBehaviour {
 	public float speed;
 	[Header("Rotation speed"), Range(0f, 20f)]
 	public float turnSpeed;
-	float prevAxis;
 	int facingR = 1;
 	bool turningR;
 	bool turningL;
@@ -32,7 +31,6 @@ public class GuardianFish : MonoBehaviour {
 		}
 
 		transform.position += Input.GetAxis("Horizontal") * speed * Vector3.right * Time.fixedDeltaTime;
-		prevAxis = Input.GetAxis("Horizontal");
 	}
 
 	IEnumerator TurningWait() {
