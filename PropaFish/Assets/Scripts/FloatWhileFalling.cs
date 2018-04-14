@@ -39,9 +39,4 @@ public class FloatWhileFalling : MonoBehaviour {
             this.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0, sampleZRot) * rotationRange);
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
 }
