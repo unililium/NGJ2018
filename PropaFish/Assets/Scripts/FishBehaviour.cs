@@ -55,11 +55,10 @@ public class FishBehaviour : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider) {
-		previousRotation = transform.rotation;
-		if(collider.tag == "wallR")
-     	{
+		if(collider.tag == "WallR") {
+			Debug.Log("wallleee");
 			turningR = true;
-		} else if(collider.tag == "wallL") {
+		} else if(collider.tag == "WallL") {
 			turningL = true;
 		}
 	}
