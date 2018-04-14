@@ -8,6 +8,8 @@ public class FoodAnimScript : MonoBehaviour
     Animator anim;
     Suction suction;
 
+    private float energyEaten;
+
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
@@ -20,15 +22,16 @@ public class FoodAnimScript : MonoBehaviour
         }
     }
 
-    public void StartFoodAnim(Suction suction)
+    public void StartFoodAnim(Suction suction, float energyEaten)
     {
         this.suction = suction;
+        this.energyEaten = energyEaten;
         StartCoroutine(StartFoodDelay());
     }
 
     public void EndFood()
     {
-        suction.StartChunkingFood();
+        suction.StartChunkingFood(energyEaten);
         Debug.Log("Play food falling");
         Destroy(gameObject);
     }

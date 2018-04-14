@@ -792,5 +792,5 @@ MonoBehaviour:
     type: 2}
   suctionKey: 32
   foodPrefab: {fileID: 1575243267113076, guid: cfaf986eb561aac4987385f3d46bbfff, type: 2}
-  amountOfFood: 5
   foodChunkPeriod: 0.15
+  maxEnergyPerChunk: 0.25
