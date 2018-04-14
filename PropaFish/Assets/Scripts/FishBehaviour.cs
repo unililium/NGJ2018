@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FishBehaviour : MonoBehaviour {
 	
-	private Rigidbody rb;
 	[Header("Movement speed"), Range(0f, 20f)]
 	public float speed;
 	[Header("Rotation speed"), Range(0f, 20f)]
