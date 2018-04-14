@@ -15,13 +15,20 @@ public class FloatWhileFalling : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        float sampleX = Mathf.PerlinNoise(Time.time * floatingInstability, perlin) - 0.5f;
-        // float sampleZ = Mathf.PerlinNoise(perlin, Time.time * floatingSpeed);
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(sampleX, 0, 0) * floatingRange);
+        if (Aquarium.IsTouchingGround(this.gameObject))
+        {
+            Destroy(this);
+        }
+        else
+        {
+            float sampleX = Mathf.PerlinNoise(Time.time * floatingInstability, perlin) - 0.5f;
+            // float sampleZ = Mathf.PerlinNoise(perlin, Time.time * floatingSpeed);
+            this.GetComponent<Rigidbody>().AddForce(new Vector3(sampleX, 0, 0) * floatingRange);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(this);
+        
     }
 }
