@@ -309,15 +309,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 114417699249253786, guid: 2ff5b027da1c04602bbee9bd1ac248f2,
-        type: 2}
-      propertyPath: turnSpeed
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 4573125045658400, guid: 2ff5b027da1c04602bbee9bd1ac248f2, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ff5b027da1c04602bbee9bd1ac248f2, type: 2}
   m_IsPrefabParent: 0
