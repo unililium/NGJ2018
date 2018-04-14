@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BigEatFoodScript : MonoBehaviour {
+public class EatFoodScript : MonoBehaviour {
 
     public bool isEating = false;
 
@@ -22,7 +22,18 @@ public class BigEatFoodScript : MonoBehaviour {
             Debug.Log("Food registered");
             isEating = true;
             Destroy(collision.gameObject);
-            gameObject.GetComponent<BigFishColor>().FoodUP();
+
+            //Here change what to do based on who eats it. 
+            if(gameObject.tag == "smallFish") {
+                //Do something
+                GetComponent<FishBehaviour>().speed += 10;
+            }
+
+            if(gameObject.tag == "KingFish") {
+                //DO something
+                gameObject.GetComponent<BigFishColor>().FoodUP();
+            }
+
             StartCoroutine(StopEating());
         }
     }
