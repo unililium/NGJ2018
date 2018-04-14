@@ -20,8 +20,7 @@ public class Breed : MonoBehaviour {
     }
 
     public void MakeABaby()
-    {
-        Debug.Log("Made a baby");
-        GameObject egg = Instantiate<GameObject>(eggPrefab, transform.position + Vector3.down, transform.rotation);
+    {        
+        Instantiate<GameObject>(eggPrefab, transform.position + Vector3.down, transform.rotation);
     }
 }
