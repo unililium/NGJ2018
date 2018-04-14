@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54970341099480546}
   - component: {fileID: 114269866445675478}
   - component: {fileID: 114668813703926198}
+  - component: {fileID: 114713079766007720}
   m_Layer: 0
   m_Name: Egg
   m_TagString: Untagged
@@ -40,7 +41,7 @@ Transform:
   m_GameObject: {fileID: 1522340918722322}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.57112014, y: -1.0668631, z: -0.12966534}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -112,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d97b5bcfc21984cb79494e1468664b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragInWater: 10
+  dragInWater: 5
   floatingInstability: 10
   floatingRange: 20
   rotationRange: 0
@@ -127,9 +128,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b409014ed1d5ac409112c308cd8ba28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incubationTime: 1
-  babyFishPrefab: {fileID: 1653013231224058, guid: a46acf7d062974e04b0d2e7ee6783613,
+  incubationTime: 4
+  babyFishPrefab: {fileID: 1554793467321632, guid: 4fb7da432b7f34e4db865bea339feadd,
     type: 2}
+--- !u!114 &114713079766007720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522340918722322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856e189875d93ba4bbbd39036da40c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energy: 1
 --- !u!135 &135928653478339072
 SphereCollider:
   m_ObjectHideFlags: 1

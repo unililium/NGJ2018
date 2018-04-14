@@ -30,7 +30,7 @@ public class TrackCollisions : MonoBehaviour {
     void OnCollisionEnter(Collision collision)
     {
         collided.Add(collision.collider.gameObject);
-        Debug.Log(collision.collider.gameObject.name + " fell");
+        // Debug.Log(collision.collider.gameObject.name + " fell");
     }
 
     void OnCollisionExit(Collision collision)

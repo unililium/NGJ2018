@@ -25,6 +25,10 @@ public class HatchOrDecompose : MonoBehaviour {
                 {
                     GameObject babyFish = Instantiate<GameObject>(babyFishPrefab, this.transform.position, Quaternion.identity);
                     babyFish.name = "Fish born @ " + Time.time;
+                    EatFoodScript babyStats = babyFish.GetComponent<EatFoodScript>();
+                    babyStats.Energy = this.GetComponent<Nutrient>().energy;
+                    babyFish.transform.localScale /= 2;
+                    babyStats.size /= 2;
                     Birth birth = babyFish.GetComponent<Birth>();
                     if (birth)
                     {
