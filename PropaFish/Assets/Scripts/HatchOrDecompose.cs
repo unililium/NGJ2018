@@ -23,8 +23,13 @@ public class HatchOrDecompose : MonoBehaviour {
             {
                 if (babyFishPrefab)
                 {
-                    GameObject babyFish = Instantiate<GameObject>(babyFishPrefab, this.transform);
+                    GameObject babyFish = Instantiate<GameObject>(babyFishPrefab, this.transform.position, Quaternion.identity);
                     babyFish.name = "Fish born @ " + Time.time;
+                    Birth birth = babyFish.GetComponent<Birth>();
+                    if (birth)
+                    {
+                        birth.enabled = true;
+                    }
                 } // else, just decompose
                 Destroy(this.gameObject);
             }
