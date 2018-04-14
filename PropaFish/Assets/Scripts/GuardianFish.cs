@@ -9,20 +9,20 @@ public class GuardianFish : MonoBehaviour {
 	[Header("Rotation speed"), Range(0f, 20f)]
 	public float turnSpeed;
 	float prevAxis;
+	int facingR = 1;
 	bool turningR;
 	bool turningL;
 
 	void Update () {
-		Debug.Log(Input.GetAxis("Horizontal")*prevAxis);
-		if(Input.GetAxis("Horizontal") * prevAxis < 0) {
-			if(Input.GetAxis("Horizontal") < 0) turningL = true;
-			if(Input.GetAxis("Horizontal") > 0) turningR = true;
+		if(Input.GetAxis("Horizontal") < 0 && facingR == 1) {
+			turningR = true;
+			facingR = -1;
+			StartCoroutine(TurningWait());
+		} else if(Input.GetAxis("Horizontal") > 0 && facingR == -1) { 
+			turningL = true;
+			facingR = 1;
+			StartCoroutine(TurningWait());
 		}
-		transform.position += Input.GetAxis("Horizontal") * speed * transform.right * Time.fixedDeltaTime;
-		prevAxis = Input.GetAxis("Horizontal");
-	}
-
-	void FixedUpdate () {
 		if(turningR) {
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,180,0), turnSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -30,6 +30,9 @@ public class GuardianFish : MonoBehaviour {
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0,0), turnSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0, 0, 0);
 		}
+
+		transform.position += Input.GetAxis("Horizontal") * speed * Vector3.right * Time.fixedDeltaTime;
+		prevAxis = Input.GetAxis("Horizontal");
 	}
 
 	IEnumerator TurningWait() {
