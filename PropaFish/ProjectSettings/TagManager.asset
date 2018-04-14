@@ -6,6 +6,10 @@ TagManager:
   tags:
   - smallFish
   - food
+  - WallR
+  - WallL
+  - Fish
+  - KingFish
   layers:
   - Default
   - TransparentFX
