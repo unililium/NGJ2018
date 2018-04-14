@@ -8,7 +8,7 @@ public class RebellionBehaviour : MonoBehaviour {
 	public float speed;
 	[Header("Rotation speed"), Range(0f, 20f)]
 	public float turnSpeed;
-	[Header("Colldown"), Range(5f, 40f)]
+	[Header("Cooldown"), Range(5f, 40f)]
 	public float cooldown;
 	private float timeStamp;
 	private bool rebellionStarted = false;

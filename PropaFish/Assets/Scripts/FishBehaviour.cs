@@ -8,13 +8,18 @@ public class FishBehaviour : MonoBehaviour {
 	[Header("Movement speed"), Range(0f, 20f)]
 	public float speed;
 	[Header("Rotation speed"), Range(0f, 20f)]
-	public float turnSpeed;	
+	public float turnSpeed;
+	[Header("Perlin Noise Multiplicator"), Range(1f, 5f)]
+	public float perlinNoiseMultiplicator;
 	public bool turningR = false;
 	public bool turningL = false;
-	float perlinX = Random.Range(0f, 100f);
-	float perlinY = Random.Range(0f, 100f); 
+	float perlinX;
+	float perlinY;
 
-	
+	void Start() {
+		perlinX = Random.Range(0f, 100f);
+		perlinY = Random.Range(0f, 100f); 
+	}
 	void FixedUpdate () {
 		if(turningR) {
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,180,0), turnSpeed * Time.deltaTime);
@@ -43,9 +48,10 @@ public class FishBehaviour : MonoBehaviour {
 		transform.position += speed * transform.right * Time.fixedDeltaTime;
 
 		// Random vertical mvmt
-		float random = Mathf.PerlinNoise(perlinX, perlinY) - 0.5f;
+		float random = perlinNoiseMultiplicator * (Mathf.PerlinNoise(perlinX, perlinY) - 0.47f);
 		perlinX += 0.1f; 
-		if(random > -0.2f && random < 0.2f) transform.position += speed * random * transform.up * Time.fixedDeltaTime;
+		//if(random > -0.2f && random < 0.2f)
+		transform.position += speed * random * transform.up * Time.fixedDeltaTime;
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
 

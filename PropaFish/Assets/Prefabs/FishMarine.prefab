@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114653835163030726}
   - component: {fileID: 114520881990574702}
   - component: {fileID: 114933514282457216}
+  - component: {fileID: 114136458256305176}
   m_Layer: 0
   m_Name: FishMarine
   m_TagString: Fish
@@ -70,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1554793467321632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.275, y: -1.85, z: -0.55451775}
+  m_LocalPosition: {x: 0.65, y: -0.07, z: -0.55451775}
   m_LocalScale: {x: 1.2190216, y: 0.213977, z: 0.5187326}
   m_Children:
   - {fileID: 4087097995889782}
@@ -183,6 +184,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114136458256305176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554793467321632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1663183c30745738523a568e7fd4bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 6.2
+  turnSpeed: 10.24
+  cooldown: 7.8
 --- !u!114 &114520881990574702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -208,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   turnSpeed: 12
+  perlinNoiseMultiplicator: 1.5
   turningR: 0
   turningL: 0
 --- !u!114 &114933514282457216

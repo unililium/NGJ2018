@@ -262,6 +262,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 114653835163030726, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: perlinNoiseMultiplicator
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
   m_IsPrefabParent: 0
@@ -496,6 +501,11 @@ Prefab:
       propertyPath: m_Name
       value: FishMarine (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114653835163030726, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: perlinNoiseMultiplicator
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
   m_IsPrefabParent: 0
@@ -545,6 +555,16 @@ Prefab:
     - target: {fileID: 4829287047697970, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 114653835163030726, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: perlinNoiseMultiplicator
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114653835163030726, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: turningR
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
@@ -750,6 +770,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 114653835163030726, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: perlinNoiseMultiplicator
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
   m_IsPrefabParent: 0
@@ -918,25 +943,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!1 &1800766149 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1554793467321632, guid: 4fb7da432b7f34e4db865bea339feadd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1274523879}
---- !u!114 &1800766150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1800766149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1663183c30745738523a568e7fd4bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 6.2
-  turnSpeed: 10.24
-  cooldown: 7.8
 --- !u!1 &1815746458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,6 +1085,11 @@ Prefab:
     - target: {fileID: 1554793467321632, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
       propertyPath: m_Name
       value: FishMarine (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114653835163030726, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: perlinNoiseMultiplicator
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
