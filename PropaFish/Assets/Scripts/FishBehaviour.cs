@@ -9,16 +9,9 @@ public class FishBehaviour : MonoBehaviour {
 	public float speed;
 	[Header("Rotation speed"), Range(0f, 20f)]
 	public float turnSpeed;	
-	private Vector3 currentAngle;
-	private Vector3 targetAngle = new Vector3(0f, 180f, 0f);
-	private ConstantForce constForce;
 	public bool turningR = false;
 	public bool turningL = false;
-	private Quaternion previousRotation; 
 
-	void Start () {
-		previousRotation = transform.rotation;
-	}
 	
 	void FixedUpdate () {
 		if(turningR) {
@@ -42,14 +35,6 @@ public class FishBehaviour : MonoBehaviour {
 		// Random vertical mvmt
 		float random = Random.Range(-5f, 5f);
 		if(random > -1f && random < 1f) transform.position += speed * random * transform.up * Time.fixedDeltaTime;
-	}
-
-	Quaternion GetOppositeRotation(Quaternion rotation) {
-		Quaternion result = new Quaternion(0f, 0f, 0f, 1.0f);
-
-		if(rotation == new Quaternion(0f, 0f, 0f, 1.0f)) result = new Quaternion(0f, 1.0f, 0f, 0f);
-		if(rotation == new Quaternion(0f, 1.0f, 0f, 0f)) result = new Quaternion(0f, 0f, 0f, 1.0f);
-		return result; 
 	}
 
 	void OnTriggerEnter(Collider collider) {
