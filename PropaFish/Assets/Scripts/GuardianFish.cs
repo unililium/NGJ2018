@@ -12,7 +12,16 @@ public class GuardianFish : MonoBehaviour {
 	bool turningR;
 	bool turningL;
 
-	void Update () {
+    private void Start()
+    {
+        GetComponent<Prone>().enabled = false;
+        GetComponent<RebellionBehaviour>().enabled = false;
+        GetComponent<FishBehaviour>().enabled = false;
+        GetComponent<Collider>().isTrigger = true;
+        GetComponent<FloatWhileFalling>().rotationRange /= 10;
+    }
+
+    void Update () {
 		if(Input.GetAxis("Horizontal") < 0 && facingR == 1) {
 			turningR = true;
 			facingR = -1;
@@ -44,9 +53,10 @@ public class GuardianFish : MonoBehaviour {
 	/// </summary>
 	/// <param name="other">The other Collider involved in this collision.</param>
 	void OnTriggerEnter(Collider other) {
-		if(other.tag == "Fish") {
-			other.gameObject.GetComponent<RebellionBehaviour>().DiveDown();
-			Debug.Log("collision");
+        RebellionBehaviour rebellion = other.gameObject.GetComponent<RebellionBehaviour>();
+        if (rebellion) {
+
+			rebellion.DiveDown();
 		}
 	}
 }
