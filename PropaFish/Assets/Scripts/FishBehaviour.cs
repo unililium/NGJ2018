@@ -5,8 +5,10 @@ using UnityEngine;
 public class FishBehaviour : MonoBehaviour {
 	
 	private Rigidbody rb;
-	[Range(0f, 5f)]
+	[Header("Movement speed"), Range(0f, 5f)]
 	public float speed;
+	[Header("Rotation speed"), Range(0f, 20f)]
+	public float turnSpeed;	
 	private Vector3 currentAngle;
 	private Vector3 targetAngle = new Vector3(0f, 180f, 0f);
 	private ConstantForce constForce;
@@ -20,9 +22,9 @@ public class FishBehaviour : MonoBehaviour {
 	
 	void FixedUpdate () {
 		if(turningR) {
-			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,180,0), 10 * Time.deltaTime);
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,180,0), turnSpeed * Time.deltaTime);
 		} else if(turningL) {
-			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0,0), 10 * Time.deltaTime);
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0,0), turnSpeed * Time.deltaTime);
 		} else {
 			Move();
 		}
