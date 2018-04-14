@@ -8,17 +8,19 @@ public class Suction : MonoBehaviour {
 
     public Transform animSpawnPos;
     public GameObject sphereTravelPrefab;
-
-
+    public KeyCode suctionKey;
 
 	// Use this for initialization
 	void Start () {
-		
+        if (suctionKey == KeyCode.None)
+        {
+            suctionKey = KeyCode.Space;
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown("space")) {
+		if(Input.GetKeyDown(suctionKey)) {
             EatAFish();
         }
 	}
@@ -30,8 +32,7 @@ public class Suction : MonoBehaviour {
             if(fish.GetComponent<Prone>().insideSuctionRange == true) {
                 Destroy(fish);
                 //TODO: Start Suction animation and send out food on other end
-                GameObject orb = Instantiate(sphereTravelPrefab, animSpawnPos.position, animSpawnPos.rotation);
-                orb.transform.parent = gameObject.transform.parent;
+                GameObject orb = Instantiate(sphereTravelPrefab, animSpawnPos.position, animSpawnPos.rotation, gameObject.transform.parent);
                 orb.GetComponent<FoodAnimScript>().StartFoodAnim();
             }
         }
