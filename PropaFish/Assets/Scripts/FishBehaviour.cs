@@ -9,29 +9,35 @@ public class FishBehaviour : MonoBehaviour {
 	public float speed;
 	private Vector3 currentAngle;
 	private Vector3 targetAngle = new Vector3(0f, 180f, 0f);
+	private ConstantForce constForce;
+	public bool turning = false;
+	private Quaternion previousRotation; 
 
-	private bool turning = false;
 	void Start () {
-		rb = GetComponent<Rigidbody>();
-		currentAngle = transform.eulerAngles;
-		Vector3 movement = new Vector3 (1f, 0.0f, 0f);
+		previousRotation = transform.rotation;
 	}
 	
 	void FixedUpdate () {
+		if(turning) {
+			Turn();
+			if(transform.rotation.x == -previousRotation.x) turning = false; 
+		} else {
+			Move();
+		}
 	}
 
     void Turn() {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 180, 0), Time.deltaTime);
+		//transform.Rotate(Vector3.right * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 180, 0), 2 * Time.deltaTime);
 	}
 
 	void Move() {
-		Vector3 movement = new Vector3 (1f, 0.0f, 0f);
-		rb.AddForce (movement * speed); 
+		transform.position += speed * transform.right * Time.fixedDeltaTime;
 	}
 
-	void OnCOllisionEnter(Collision collision) {
-		ConstantForce constForce = GetComponent<ConstantForce>();
-		constForce.relativeForce = new Vector3(0f, 0f, 0f);
-		Turn();
+	void OnTriggerEnter(Collider other) {
+		Debug.Log("trigger");
+		previousRotation = transform.rotation;
+		turning = true;
 	}
 }
