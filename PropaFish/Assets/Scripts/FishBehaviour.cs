@@ -16,9 +16,10 @@ public class FishBehaviour : MonoBehaviour {
 	float perlinY;
 
 	void Start() {
-		perlinX = Random.Range(0f, 100f);
-		perlinY = Random.Range(0f, 100f); 
+		perlinX = Random.Range(0f, 1f);
+		perlinY = Random.Range(0f, 1f); 
 	}
+
 	void FixedUpdate () {
 		if(turningR) {
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,180,0), turnSpeed * Time.deltaTime);
@@ -47,11 +48,12 @@ public class FishBehaviour : MonoBehaviour {
 		transform.position += speed * transform.right * Time.fixedDeltaTime;
 
 		// Random vertical mvmt
-		float random = perlinNoiseMultiplicator * (Mathf.PerlinNoise(perlinX, perlinY) - 0.47f);
-		perlinX += 0.1f; 
-		//if(random > -0.2f && random < 0.2f)
-		transform.position += speed * random * transform.up * Time.fixedDeltaTime;
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+		float random = perlinNoiseMultiplicator * (Mathf.PerlinNoise(perlinX, perlinY) - 0.5f);
+		perlinX += Time.fixedDeltaTime;
+        //if(random > -0.2f && random < 0.2f)
+        transform.position += speed * random * Vector3.up * Time.fixedDeltaTime;
+        float clampedY = Mathf.Clamp(transform.position.y, Aquarium.GetGroundY(), Aquarium.GetWaterY());
+        transform.position = new Vector3(transform.position.x, clampedY, 0);
     }
 
 	void OnTriggerEnter(Collider collider) {
