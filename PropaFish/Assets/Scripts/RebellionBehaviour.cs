@@ -12,6 +12,7 @@ public class RebellionBehaviour : MonoBehaviour {
 	public float cooldown;
 	private float timeStamp;
 	private bool rebellionStarted = false;
+	private bool rebellionStop = false;
 	private bool turning = false;
 	private Vector3 savedPos;
 	private Quaternion savedRot;
@@ -27,13 +28,25 @@ public class RebellionBehaviour : MonoBehaviour {
 			gameObject.GetComponent<FishBehaviour>().enabled = false;
 		}
 		if(rebellionStarted) {
-			
+			StartCoroutine(RebellionTimeout());
 			if(turning) {	
 				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0,90), turnSpeed * Time.deltaTime);
 				StartCoroutine(TurningWait());
 			}
 			else Move();
 			
+		} else if(rebellionStop) {
+			
+			if(turning) {
+				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0,270), turnSpeed * Time.deltaTime);
+				StartCoroutine(TurningWait());
+			}
+			transform.position = Vector3.MoveTowards(transform.position, savedPos, speed * Time.deltaTime);
+
+			if(transform.position == savedPos) {	
+				transform.rotation = Quaternion.Slerp(transform.rotation, savedRot, turnSpeed * 3 * Time.deltaTime);
+				StartCoroutine(RebellionEnd());
+			}			
 		}
 	}
 
@@ -42,8 +55,8 @@ public class RebellionBehaviour : MonoBehaviour {
 
 		// Random vertical mvmt
 		float random = Random.Range(-5f, 5f);
-		//if(random > -1f && random < 1f) transform.position += speed * random * transform.up * Time.fixedDeltaTime;
- 	    //transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+		if(random > -1f && random < 1f) transform.position += speed * random * transform.up * Time.fixedDeltaTime;
+ 	    transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 	}
 
 	IEnumerator TurningWait() {
@@ -56,4 +69,16 @@ public class RebellionBehaviour : MonoBehaviour {
 		turning = true;
     }
 
+	IEnumerator RebellionTimeout() {
+        yield return new WaitForSeconds(2f);
+		rebellionStarted = false;
+		rebellionStop = true;
+		turning = true;
+    }
+
+	IEnumerator RebellionEnd() {
+		yield return new WaitForSeconds(1f);
+		rebellionStop = false;
+		gameObject.GetComponent<FishBehaviour>().enabled = true;
+	}
 }

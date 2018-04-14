@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6.2
   turnSpeed: 10.24
-  cooldown: 18.9
+  cooldown: 7.8
 --- !u!1001 &129560049
 Prefab:
   m_ObjectHideFlags: 0
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6.2
   turnSpeed: 10.24
-  cooldown: 18.9
+  cooldown: 7.8
 --- !u!4 &743296920 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4840066954557226, guid: 65b73fc70cd864814b689dd0aaa14289,
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6.2
   turnSpeed: 10.24
-  cooldown: 18.9
+  cooldown: 7.8
 --- !u!1 &869094754
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,7 +702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6.2
   turnSpeed: 10.24
-  cooldown: 18.9
+  cooldown: 7.8
 --- !u!1001 &1455258074
 Prefab:
   m_ObjectHideFlags: 0
@@ -771,7 +771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6.2
   turnSpeed: 10.24
-  cooldown: 18.9
+  cooldown: 7.8
 --- !u!1001 &1518593752
 Prefab:
   m_ObjectHideFlags: 0
@@ -936,7 +936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6.2
   turnSpeed: 10.24
-  cooldown: 18.9
+  cooldown: 7.8
 --- !u!1 &1815746458
 GameObject:
   m_ObjectHideFlags: 0
