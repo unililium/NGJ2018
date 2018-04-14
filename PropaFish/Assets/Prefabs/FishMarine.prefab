@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114653835163030726}
   - component: {fileID: 114520881990574702}
   - component: {fileID: 114933514282457216}
+  - component: {fileID: 114706015984955006}
   m_Layer: 0
   m_Name: FishMarine
   m_TagString: Fish
@@ -210,6 +211,19 @@ MonoBehaviour:
   turnSpeed: 12
   turningR: 0
   turningL: 0
+--- !u!114 &114706015984955006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554793467321632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adcb1512f355d804690810f96e22ebbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDelay: 0
+  nextDelay: 0
 --- !u!114 &114933514282457216
 MonoBehaviour:
   m_ObjectHideFlags: 1

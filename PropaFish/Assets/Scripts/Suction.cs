@@ -60,14 +60,12 @@ public class Suction : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "smallFish") {
             other.gameObject.GetComponent<Prone>().insideSuctionRange = true;
-            Debug.Log("Fish collision");
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if(other.gameObject.tag == "smallFish") {
             other.gameObject.GetComponent<Prone>().insideSuctionRange = false;
-            Debug.Log("Fish exit");
         }
     }
 
