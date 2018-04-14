@@ -25,11 +25,7 @@ GameObject:
   - component: {fileID: 114653835163030726}
   - component: {fileID: 114520881990574702}
   - component: {fileID: 114933514282457216}
-  - component: {fileID: 114981195812435014}
-  - component: {fileID: 114981341415676038}
-  - component: {fileID: 114280013879929834}
-  - component: {fileID: 114095375878583718}
-  - component: {fileID: 114209336489714390}
+  - component: {fileID: 114706015984955006}
   m_Layer: 0
   m_Name: FishMarine
   m_TagString: Fish
@@ -188,46 +184,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114095375878583718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1554793467321632}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c126337198f25d747a1ba341a21a0b1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  youthDuration: 10
---- !u!114 &114209336489714390
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1554793467321632}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66d97b5bcfc21984cb79494e1468664b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dragInWater: 3
-  floatingInstability: 10
-  floatingRange: 10
-  rotationRange: 5
---- !u!114 &114280013879929834
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1554793467321632}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b409014ed1d5ac409112c308cd8ba28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  incubationTime: 1
-  babyFishPrefab: {fileID: 0}
 --- !u!114 &114520881990574702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,6 +211,19 @@ MonoBehaviour:
   turnSpeed: 12
   turningR: 0
   turningL: 0
+--- !u!114 &114706015984955006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554793467321632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adcb1512f355d804690810f96e22ebbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDelay: 0
+  nextDelay: 0
 --- !u!114 &114933514282457216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,32 +236,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEating: 0
-  size: 1
-  postEatingBreakDuration: 0.5
-  fullnessDecreaseSpeed: 0.02
-  minEnergyBeforeDeath: 0
---- !u!114 &114981195812435014
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1554793467321632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f9f4c34bb1290243a834f650b944d41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114981341415676038
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1554793467321632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3f45000bb850e9409fb6dd5c49de075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eggPrefab: {fileID: 1522340918722322, guid: 58e090b0784314345ba5d40e76d25a9c, type: 2}
-  minDistanceBetweenBirths: 5
-  maxDistanceBetweenBirths: 60
