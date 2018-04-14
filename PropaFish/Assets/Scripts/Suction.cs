@@ -8,13 +8,13 @@ public class Suction : MonoBehaviour {
     public Transform foodDispenserPos;
     public GameObject sphereTravelPrefab;
     public KeyCode suctionKey;
-    public GameObject foodPrefab;
-    public int amountOfFood;
+    public GameObject foodPrefab;    
     public float foodChunkPeriod;
+    public float maxEnergyPerChunk;
 
     GameObject[] smallFish;
-    private int foodChunks = 0;
-    private bool chunking = false;
+    private Queue<float> energyPerChunk = new Queue<float>();
+    private bool chunking = false;    
 
     // Use this for initialization
     void Start () {
@@ -26,7 +26,7 @@ public class Suction : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (foodChunks == 0)
+        if (energyPerChunk.Count == 0) // It can be easily modified to work continuously
         {
             if (Input.GetKeyDown(suctionKey))
             {
@@ -47,11 +47,12 @@ public class Suction : MonoBehaviour {
         smallFish = GameObject.FindGameObjectsWithTag("smallFish");
 
         foreach (GameObject fish in smallFish) {
-            if(fish.GetComponent<Prone>().insideSuctionRange == true) {
-                Destroy(fish);
-                //TODO: Start Suction animation and send out food on other end
+            if(fish.GetComponent<Prone>().insideSuctionRange == true) {                
                 GameObject orb = Instantiate(sphereTravelPrefab, animSpawnPos.position, animSpawnPos.rotation, gameObject.transform.parent);
-                orb.GetComponent<FoodAnimScript>().StartFoodAnim(this);
+                EatFoodScript eatenFishStats = fish.GetComponent<EatFoodScript>();
+                float energyEaten = eatenFishStats ? eatenFishStats.Energy : 0f;
+                orb.GetComponent<FoodAnimScript>().StartFoodAnim(this, energyEaten);
+                Destroy(fish);
             }
         }
 
@@ -60,20 +61,24 @@ public class Suction : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "smallFish") {
             other.gameObject.GetComponent<Prone>().insideSuctionRange = true;
-            Debug.Log("Fish collision");
+            // Debug.Log("Fish collision");
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if(other.gameObject.tag == "smallFish") {
             other.gameObject.GetComponent<Prone>().insideSuctionRange = false;
-            Debug.Log("Fish exit");
+            // Debug.Log("Fish exit");
         }
     }
 
-    public void StartChunkingFood()
+    public void StartChunkingFood(float totalEnergy)
     {
-        foodChunks = amountOfFood;
+        int foodChunksCount = Mathf.CeilToInt(totalEnergy / maxEnergyPerChunk);
+        for (int i = 0; i < foodChunksCount; i++)
+        {
+            energyPerChunk.Enqueue(totalEnergy / foodChunksCount);
+        }
     }
 
     IEnumerator ChunkFood()
@@ -81,8 +86,8 @@ public class Suction : MonoBehaviour {
         Debug.Log("Chunking");
         yield return new WaitForSeconds(foodChunkPeriod);
         Debug.Log("Dispensing");
-        Instantiate<GameObject>(foodPrefab, foodDispenserPos.transform.position, foodDispenserPos.transform.rotation);
-        foodChunks--;
+        GameObject food = Instantiate<GameObject>(foodPrefab, foodDispenserPos.transform.position, foodDispenserPos.transform.rotation);
+        food.GetComponent<Nutrient>().energy = energyPerChunk.Dequeue();
         chunking = false;
     }
 } 
