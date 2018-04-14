@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -603,7 +603,7 @@ SpriteRenderer:
   m_Size: {x: 14.23, y: 7.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &222872543
 Transform:
@@ -1301,7 +1301,7 @@ SpriteRenderer:
   m_Size: {x: 28.95, y: 22.960001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &669964938
 Transform:
@@ -1711,11 +1711,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1127246096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4d6d06c2ebbc0a44b790e9da4fc269b, type: 3}
+  m_Script: {fileID: 11500000, guid: b86101652a62985468baa4a2eb7dbec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   algeAmount: 20
-  refreshVariable: 0
+  refreshVariable: 5
 --- !u!4 &1133982573 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4829287047697970, guid: 4fb7da432b7f34e4db865bea339feadd,
@@ -1759,6 +1759,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEating: 0
+  size: 0
+  postEatingBreakDuration: 0
+  fullnessDecreaseSpeed: 0
+  minEnergyBeforeDeath: 0
 --- !u!114 &1215195547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1994,7 +1998,7 @@ SpriteRenderer:
   m_Size: {x: 14.23, y: 7.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &1321012474
 Transform:
@@ -2197,7 +2201,7 @@ SpriteRenderer:
   m_Size: {x: 11.7, y: 6.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &1491238826
 Transform:
@@ -2288,7 +2292,7 @@ SpriteRenderer:
   m_Size: {x: 0.08, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1001 &1537782802
 Prefab:
@@ -2470,7 +2474,7 @@ SpriteRenderer:
   m_Size: {x: 5.69, y: 6.46}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &1599942841 stripped
 Transform:
@@ -2731,7 +2735,7 @@ SpriteRenderer:
   m_Size: {x: 11.72, y: 0.38}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1001 &1970719053
 Prefab:
@@ -2859,7 +2863,7 @@ SpriteRenderer:
   m_Size: {x: 0.08, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &2017580876
 GameObject:
