@@ -16,9 +16,21 @@ public class TrackCollisions : MonoBehaviour {
 		
 	}
 
+    void OnTriggerEnter(Collider other)
+    {
+        collided.Add(other.gameObject);
+        Debug.Log(other.gameObject.name + " fell");
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        collided.Remove(other.gameObject);
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         collided.Add(collision.collider.gameObject);
+        Debug.Log(collision.collider.gameObject.name + " fell");
     }
 
     void OnCollisionExit(Collision collision)

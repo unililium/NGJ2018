@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hatch : MonoBehaviour {
+public class HatchOrDecompose : MonoBehaviour {
 
     public float incubationTime;
-    public GameObject babyFishPrefab;
+    public GameObject babyFishPrefab; // none if it just has to decompose
 
     private FloatWhileFalling floatWhileFalling;
 
@@ -25,11 +25,7 @@ public class Hatch : MonoBehaviour {
                 {
                     GameObject babyFish = Instantiate<GameObject>(babyFishPrefab, this.transform);
                     babyFish.name = "Fish born @ " + Time.time;
-                }
-                else
-                {
-                    Debug.LogError("This egg has no fish embryo in it");
-                }
+                } // else, just decompose
                 Destroy(this.gameObject);
             }
         }
