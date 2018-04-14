@@ -35,22 +35,22 @@ public class BigFishColor : MonoBehaviour {
         switch (colorLevel) {
             case 0:
                 rend.material.color = new Color(.2f, 0, 0, 1);
-                transform.localScale += new Vector3(.5f, .5f, .5f);
+                transform.localScale *= 1.2f;
                 colorLevel++;
                 break;
             case 1:
                 rend.material.color = new Color(.4f, 0, 0, 1);
-                transform.localScale += new Vector3(.5f, .5f, .5f);
+                transform.localScale *= 1.2f;
                 colorLevel++;
                 break;
             case 2:
                 rend.material.color = new Color(.6f, 0, 0, 1);
-                transform.localScale += new Vector3(.5f, .5f, .5f);
+                transform.localScale *= 1.2f;
                 colorLevel++;
                 break;
             case 3:
                 rend.material.color = new Color(.8f, 0, 0, 1);
-                transform.localScale += new Vector3(.5f, .5f, .5f);
+                transform.localScale *= 1.2f;
                 colorLevel++;
                 break;
             case 4:
@@ -68,7 +68,7 @@ public class BigFishColor : MonoBehaviour {
         //Take the level, and make it go up
         switch (colorLevel) {
             case 0:
-                Debug.Log("Lowest point");
+                Debug.Log("Die");
                 break;
             case 1:
                 rend.material.color = new Color(0, 0, 0, 1);
@@ -76,22 +76,22 @@ public class BigFishColor : MonoBehaviour {
                 break;
             case 2:
                 rend.material.color = new Color(.2f, 0, 0, 1);
-                transform.localScale -= new Vector3(.5f, .5f, .5f);
+                transform.localScale *= .8f;
                 colorLevel--;
                 break;
             case 3:
                 rend.material.color = new Color(.4f, 0, 0, 1);
-                transform.localScale -= new Vector3(.5f, .5f, .5f);
+                transform.localScale *= .8f;
                 colorLevel--;
                 break;
             case 4:
                 rend.material.color = new Color(.6f, 0, 0, 1);
-                transform.localScale -= new Vector3(.5f, .5f, .5f);
+                transform.localScale *= .8f;
                 colorLevel--;
                 break;
             case 5:
                 rend.material.color = new Color(.8f, 0, 0, 1);
-                transform.localScale -= new Vector3(.5f, .5f, .5f);
+                transform.localScale *= .8f;
                 colorLevel--;
                 break;
         }
