@@ -4,40 +4,34 @@ using UnityEngine;
 
 public class FishBehaviour : MonoBehaviour {
 	
+	private Rigidbody rb;
 	[Range(0f, 5f)]
 	public float speed;
 	private Vector3 currentAngle;
-	private Vector3 targetAngle = new Vector3(90f, 0f, 0f);
+	private Vector3 targetAngle = new Vector3(0f, 180f, 0f);
 
-	private bool moving;
+	private bool turning = false;
 	void Start () {
+		rb = GetComponent<Rigidbody>();
 		currentAngle = transform.eulerAngles;
-		moving = true;	
+		Vector3 movement = new Vector3 (1f, 0.0f, 0f);
 	}
 	
-	void Update () {
-		Move();	
+	void FixedUpdate () {
 	}
 
-	void Turn() {
-		Vector3 currentAngle = transform.eulerAngles;
-
-        transform.eulerAngles = new Vector3(
-            Mathf.LerpAngle(currentAngle.x, targetAngle.x, Time.deltaTime),
-            Mathf.LerpAngle(currentAngle.y, targetAngle.y, Time.deltaTime),
-            Mathf.LerpAngle(currentAngle.z, targetAngle.z, Time.deltaTime));
-		moving = true;
-    }
+    void Turn() {
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 180, 0), Time.deltaTime);
+	}
 
 	void Move() {
-		if(moving)
-        	transform.position = transform.position + speed * transform.right * Time.fixedDeltaTime;
+		Vector3 movement = new Vector3 (1f, 0.0f, 0f);
+		rb.AddForce (movement * speed); 
 	}
 
-	void OnCollisionEnter(Collision collision)
-    {
-		Debug.Log("collision");
-		moving = false;
-        Turn();
+	void OnCOllisionEnter(Collision collision) {
+		ConstantForce constForce = GetComponent<ConstantForce>();
+		constForce.relativeForce = new Vector3(0f, 0f, 0f);
+		Turn();
 	}
 }
