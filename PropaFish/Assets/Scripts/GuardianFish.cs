@@ -38,4 +38,15 @@ public class GuardianFish : MonoBehaviour {
         turningL = false;
 		turningR = false;
     }
+
+	/// <summary>
+	/// OnTriggerEnter is called when the Collider other enters the trigger.
+	/// </summary>
+	/// <param name="other">The other Collider involved in this collision.</param>
+	void OnTriggerEnter(Collider other) {
+		if(other.tag == "Fish") {
+			other.gameObject.GetComponent<RebellionBehaviour>().DiveDown();
+			Debug.Log("collision");
+		}
+	}
 }
