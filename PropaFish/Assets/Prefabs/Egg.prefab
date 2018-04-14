@@ -112,8 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d97b5bcfc21984cb79494e1468664b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragInWater: 10
   floatingInstability: 10
   floatingRange: 20
+  rotationRange: 0
 --- !u!114 &114668813703926198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,8 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b409014ed1d5ac409112c308cd8ba28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incubationTime: 5
-  babyFishPrefab: {fileID: 0}
+  incubationTime: 1
+  babyFishPrefab: {fileID: 1653013231224058, guid: a46acf7d062974e04b0d2e7ee6783613,
+    type: 2}
 --- !u!135 &135928653478339072
 SphereCollider:
   m_ObjectHideFlags: 1
