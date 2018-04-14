@@ -11,7 +11,7 @@ public class Hatch : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        floatWhileFalling = GetComponentInChildren<FloatWhileFalling>();
+        floatWhileFalling = GetComponent<FloatWhileFalling>();
 	}
 	
 	// Update is called once per frame
