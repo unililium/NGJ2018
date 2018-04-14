@@ -15,28 +15,36 @@ public class FishBehaviour : MonoBehaviour {
 
 	void Start () {
 		previousRotation = transform.rotation;
+		Debug.Log(previousRotation.ToString());
+		Debug.Log(GetOppositeRotation(previousRotation));
 	}
 	
 	void FixedUpdate () {
 		if(turning) {
 			Turn();
-			if(transform.rotation.x == -previousRotation.x) turning = false; 
+			if(transform.rotation == GetOppositeRotation(previousRotation)) turning = false; 
 		} else {
 			Move();
 		}
 	}
 
     void Turn() {
-		//transform.Rotate(Vector3.right * Time.deltaTime);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 180, 0), 2 * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, GetOppositeRotation(transform.rotation), 10 * Time.deltaTime);
 	}
 
 	void Move() {
 		transform.position += speed * transform.right * Time.fixedDeltaTime;
 	}
 
+	Quaternion GetOppositeRotation(Quaternion rotation) {
+		Quaternion result = new Quaternion(0f, 0f, 0f, 1.0f);
+
+		if(rotation == new Quaternion(0f, 0f, 0f, 1.0f)) result = new Quaternion(0f, 1.0f, 0f, 0f);
+		if(rotation == new Quaternion(0f, 1.0f, 0f, 0f)) result = new Quaternion(0f, 0f, 0f, 1.0f);
+		return result; 
+	}
+
 	void OnTriggerEnter(Collider other) {
-		Debug.Log("trigger");
 		previousRotation = transform.rotation;
 		turning = true;
 	}
