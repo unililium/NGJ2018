@@ -15,8 +15,6 @@ public class FishBehaviour : MonoBehaviour {
 
 	void Start () {
 		previousRotation = transform.rotation;
-		Debug.Log(previousRotation.ToString());
-		Debug.Log(GetOppositeRotation(previousRotation));
 	}
 	
 	void FixedUpdate () {
@@ -34,6 +32,10 @@ public class FishBehaviour : MonoBehaviour {
 
 	void Move() {
 		transform.position += speed * transform.right * Time.fixedDeltaTime;
+
+		// Random vertical mvmt
+		float random = Random.Range(-5f, 5f);
+		if(random > -1f && random < 1f) transform.position += speed * random * transform.up * Time.fixedDeltaTime;
 	}
 
 	Quaternion GetOppositeRotation(Quaternion rotation) {
