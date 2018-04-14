@@ -92,9 +92,7 @@ public class Suction : MonoBehaviour {
 
     IEnumerator ChunkFood()
     {
-        Debug.Log("Chunking");
         yield return new WaitForSeconds(foodChunkPeriod);
-        Debug.Log("Dispensing");
         GameObject food = Instantiate<GameObject>(foodPrefab, foodDispenserPos.transform.position, foodDispenserPos.transform.rotation);
         food.GetComponent<Nutrient>().energy = energyPerChunk.Dequeue();
         chunking = false;

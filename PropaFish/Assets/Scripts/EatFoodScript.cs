@@ -53,12 +53,21 @@ public class EatFoodScript : MonoBehaviour {
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        TryAndEat(other.gameObject);       
+    }
+
     private void OnCollisionEnter(Collision collision) {
+        TryAndEat(collision.collider.gameObject);
+    }
+
+    private void TryAndEat(GameObject collidingObject) {
         //If it colllides with food and isnt eating
-        if(!agony && collision.gameObject.tag == "food" && !isEating) {
+        if(!agony && collidingObject.tag == "food" && !isEating) {
             Debug.Log("Food registered");
             isEating = true;
-            Nutrient nutrient = collision.gameObject.GetComponent<Nutrient>();
+            Nutrient nutrient = collidingObject.GetComponent<Nutrient>();
             if (nutrient)
             {
                 energy += nutrient.energy;
@@ -67,14 +76,15 @@ public class EatFoodScript : MonoBehaviour {
                     size = energy;
                 }
             }
-            Destroy(collision.gameObject);
+            Destroy(collidingObject);
             StartCoroutine(StopEating());
         }
     }
 
     public void Die()
     {
-        gameObject.AddComponent<Rigidbody>().useGravity = true;
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<FloatWhileFalling>().enabled = true; // slowly floats down
         GetComponent<HatchOrDecompose>().enabled = true; // and decomposes
         GetComponent<FishBehaviour>().enabled = false; // and stops swimming

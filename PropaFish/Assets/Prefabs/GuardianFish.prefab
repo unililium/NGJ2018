@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33009856866986138}
   - component: {fileID: 23349739605258670}
   - component: {fileID: 65458955100091872}
-  - component: {fileID: 114417699249253786}
+  - component: {fileID: 114635828667108292}
   m_Layer: 0
   m_Name: GuardianFish
   m_TagString: Fish
@@ -88,7 +88,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -123,7 +122,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -183,7 +181,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1.0659636}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114417699249253786
+--- !u!114 &114635828667108292
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -191,8 +189,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1497836253515664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59543f12e8c9045e6809e4a1d43cdcad, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b297c875f769304fb2f358e146de1db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  turnSpeed: 14
+  turnSpeed: 12

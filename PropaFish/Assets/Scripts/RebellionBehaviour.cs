@@ -17,26 +17,47 @@ public class RebellionBehaviour : MonoBehaviour {
 	private Vector3 savedPos;
 	private Quaternion savedRot;
 
-	void Update() {
-		// Rebellion start condition
-		if(Input.GetButtonDown("Fire1") && timeStamp <= Time.time) {
-			timeStamp = Time.time + cooldown;
-			rebellionStarted = true;
-			StartCoroutine(RandomWaitForTurning());
-			savedPos = transform.position;
-			savedRot = transform.rotation;
+    public enum State
+    {
+        NOT_REBELLING,
+        CLIMBING,
+        TURNING,
+        DIVING
+    }
+    State state;
 
-			gameObject.GetComponent<FishBehaviour>().enabled = false;
+    private void Start()
+    {
+        state = State.NOT_REBELLING;
+    }
+
+    /*
+    void Update() {
+        // Rebellion start condition
+        if (state == State.NOT_REBELLING)
+        {
+            if (Input.GetButtonDown("Fire1") && timeStamp <= Time.time)
+            {
+                timeStamp = Time.time + cooldown;
+                state = State.CLIMBING;
+                savedPos = transform.position;
+                savedRot = transform.rotation;
+                gameObject.GetComponent<FishBehaviour>().enabled = false;
+                StartCoroutine(RandomWaiForTurning());
+            }
+            // else, does nothing           
+        }
+        else if (state == State.CLIMBING)
+        {
+            StartCoroutine(RebellionTimeout());
+        }
+        else if (state == State.TURNING) {
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, 90), turnSpeed * Time.deltaTime);
+			StartCoroutine(TurningWait());
 		}
-		if(rebellionStarted) {
-			StartCoroutine(RebellionTimeout());
-			if(turning) {	
-				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0,90), turnSpeed * Time.deltaTime);
-				StartCoroutine(TurningWait());
-			}
 			else Move();
 			
-		} else if(rebellionStop) {
+		} else if (rebellionStop) {
 			if(turning) {
 				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0,270), turnSpeed * Time.deltaTime);
 				StartCoroutine(TurningWait());
@@ -87,4 +108,10 @@ public class RebellionBehaviour : MonoBehaviour {
 		rebellionStop = false;
 		gameObject.GetComponent<FishBehaviour>().enabled = true;
 	}
+
+    public bool IsRebelling()
+    {
+        return rebellionStarted;
+    }
+    */
 }
