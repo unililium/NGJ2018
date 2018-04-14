@@ -1,4 +1,20 @@
-# Created by https://www.gitignore.io/api/unity,windows,monodevelop,visualstudio
+
+# Created by https://www.gitignore.io/api/unity,linux,windows,monodevelop,visualstudio,visualstudiocode
+
+### Linux ###
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
 
 ### MonoDevelop ###
 #User Specific
@@ -43,6 +59,14 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history
 
 ### Windows ###
 # Windows thumbnail cache files
@@ -117,8 +141,8 @@ artifacts/
 *_p.c
 *_i.h
 *.ilk
-# *.meta
-# *.obj
+*.meta
+*.obj
 *.pch
 *.pgc
 *.pgd
@@ -257,7 +281,6 @@ _pkginfo.txt
 # Others
 ClientBin/
 ~$*
-*~
 *.dbmdl
 *.dbproj.schemaview
 *.jfm
@@ -355,4 +378,5 @@ __pycache__/
 # By default, sensitive information, such as encrypted password
 # should be stored in the .pubxml.user file.
 
-# End of https://www.gitignore.io/api/unity,windows,monodevelop,visualstudio
+
+# End of https://www.gitignore.io/api/unity,linux,windows,monodevelop,visualstudio,visualstudiocode
