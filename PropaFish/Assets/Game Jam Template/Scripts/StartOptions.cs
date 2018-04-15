@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class StartOptions : MonoBehaviour {
@@ -52,6 +53,8 @@ public class StartOptions : MonoBehaviour {
 
 			//Set the trigger of Animator animColorFade to start transition to the FadeToOpaque state.
 			animColorFade.SetTrigger ("fade");
+
+			StartCoroutine(RemoveBackground());
 		} 
 
 		//If changeScenes is false, call StartGameInScene
@@ -127,5 +130,10 @@ public class StartOptions : MonoBehaviour {
 		playMusic.FadeUp (fastFadeIn);
 		//Play music clip assigned to mainMusic in PlayMusic script
 		playMusic.PlaySelectedMusic (1);
+	}
+
+	IEnumerator RemoveBackground() {
+		yield return new WaitForSeconds(1);
+		GetComponent<RawImage>().enabled = false;
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class QuitApplication : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class QuitApplication : MonoBehaviour {
 	#if UNITY_STANDALONE
 		//Quit the application
 		Application.Quit();
+		GetComponent<RawImage>().enabled = false;
 	#endif
 
 		//If we are running in the editor
