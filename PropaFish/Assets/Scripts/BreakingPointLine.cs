@@ -19,7 +19,7 @@ public class BreakingPointLine : MonoBehaviour {
             gameDone = true;
             Debug.Log("VIVA LA REVOLUTION!");
             GetComponent<AudioSource>().Play();
-            GameObject.Find("GameController").GetComponent<EndGameScript>().GameOver();
+            StartCoroutine(KingDead());
         }
 	}
 
@@ -30,6 +30,12 @@ public class BreakingPointLine : MonoBehaviour {
                 fishPassed++;
             }
         }
+    }
+
+    IEnumerator KingDead() {
+        Debug.Log("King is dead, all hail the rebellion");
+        yield return new WaitForSeconds(10);
+        GameObject.Find("GameController").GetComponent<EndGameScript>().GameOver();
     }
 
 

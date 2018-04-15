@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -548,11 +548,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4829287047697970, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.9
+      value: 28.93
       objectReference: {fileID: 0}
     - target: {fileID: 4829287047697970, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -25.3
+      value: -23.09
       objectReference: {fileID: 0}
     - target: {fileID: 4829287047697970, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1367,6 +1367,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 387335360}
+  - component: {fileID: 387335361}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1387,6 +1388,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &387335361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 387335359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259071127c1741040adc0666450375d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &440677193
 Prefab:
   m_ObjectHideFlags: 0
@@ -1396,7 +1408,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4829287047697970, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 12.27
+      value: 41.12
       objectReference: {fileID: 0}
     - target: {fileID: 4829287047697970, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2622,11 +2634,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4829287047697970, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 11.274022
+      value: 41.08
       objectReference: {fileID: 0}
     - target: {fileID: 4829287047697970, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -25.363626
+      value: -23.83
       objectReference: {fileID: 0}
     - target: {fileID: 4829287047697970, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
       propertyPath: m_LocalPosition.z
