@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GuardianFish : MonoBehaviour {
 
-	[Header("Movement speed"), Range(0f, 20f)]
+	[Header("Movement speed"), Range(0f, 40f)]
 	public float speed;
 	[Header("Rotation duration"), Range(0f, 20f)]
 	public float rotationDuration;
