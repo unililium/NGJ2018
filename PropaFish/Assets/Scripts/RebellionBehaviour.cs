@@ -8,8 +8,6 @@ public class RebellionBehaviour : MonoBehaviour {
     public float speed;
     [Header("Time required to turn"), Range(0f, 1f)]
 	public float timeToTurn;
-	[Header("Movement speed"), Range(0f, 20f)]
-	public float speed;
 	[Header("Cooldown"), Range(5f, 40f)]
 	public float cooldown;
     public float climbingHeight;
@@ -211,10 +209,4 @@ public class RebellionBehaviour : MonoBehaviour {
             }
         }
     }
-
-	IEnumerator RebellionEnd() {
-		yield return new WaitForSeconds(rebellionDuration);
-		rebellionStop = false;
-		gameObject.GetComponent<FishBehaviour>().enabled = true;
-	}
 }
