@@ -18,6 +18,7 @@ public class BreakingPointLine : MonoBehaviour {
 		if(fishPassed >= 5 && gameDone == false) {
             gameDone = true;
             Debug.Log("VIVA LA REVOLUTION!");
+            GetComponent<AudioSource>().Play();
             GameObject.Find("GameController").GetComponent<EndGameScript>().GameOver();
         }
 	}

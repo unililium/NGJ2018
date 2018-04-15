@@ -18,6 +18,7 @@ public class EatFoodScript : MonoBehaviour {
     private bool agony = false;
 
     public bool isKing;
+    public bool isGuard;
 
     public float Energy
     {
@@ -76,6 +77,11 @@ public class EatFoodScript : MonoBehaviour {
             {
                 AcquireEnergy(nutrient.energy);
             }
+            if (isKing || isGuard)
+            {
+                //GetComponent<AudioSource>().Play();
+                GetComponents<AudioSource>()[0].Play();
+            }
             Destroy(food);
             StartCoroutine(StopEating());
         }
@@ -118,6 +124,7 @@ public class EatFoodScript : MonoBehaviour {
 
     IEnumerator KingDead() {
         Debug.Log("King is dead, all hail the rebellion");
+        GetComponents<AudioSource>()[1].Play();
         yield return new WaitForSeconds(6);
         GameObject.Find("GameController").GetComponent<EndGameScript>().GameOver();
     }
