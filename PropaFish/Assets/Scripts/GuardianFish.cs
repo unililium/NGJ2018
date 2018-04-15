@@ -55,7 +55,6 @@ public class GuardianFish : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
         RebellionBehaviour rebellion = other.gameObject.GetComponent<RebellionBehaviour>();
         if (rebellion) {
-
 			rebellion.DiveDown();
 		}
 	}

@@ -6,42 +6,45 @@ public class FishBehaviour : MonoBehaviour {
 	
 	[Header("Movement speed"), Range(0f, 20f)]
 	public float speed;
-	[Header("Rotation speed"), Range(0f, 20f)]
-	public float turnSpeed;
+	[Header("Rotation duration"), Range(0.01f, 10f)]
+	public float rotationDuration;
 	[Header("Perlin Noise Multiplicator"), Range(1f, 5f)]
 	public float perlinNoiseMultiplicator;
 	public bool turningR = false;
 	public bool turningL = false;
+    float turnStart;
 	float perlinX;
 	float perlinY;
 
-	void Start() {
+    void Start() {
 		perlinX = Random.Range(0f, 1f);
 		perlinY = Random.Range(0f, 1f); 
 	}
 
 	void FixedUpdate () {
-		if(turningR) {
-			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,180,0), turnSpeed * Time.deltaTime);
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-		} else if(turningL) {
-			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0,0), turnSpeed * Time.deltaTime);
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        } else {
-            if(transform.rotation.eulerAngles.y < 10) {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-            } else {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
+        if (turningR || turningL)
+        {
+            float progress = Mathf.Clamp(Time.fixedTime - turnStart / this.rotationDuration, 0f, 1f);
+            Debug.Log(progress);
+            if (turningL)
+            {
+                transform.rotation = Quaternion.Euler(0, progress * -180, 0);
             }
+            else if (turningR)
+            {
+                transform.rotation = Quaternion.Euler(0, (1 - progress) * -180, 0);
+            }
+            if (progress >= 1f)
+            {
+                turningL = false;
+                turningR = false;
+            }
+        }
+        else
+        {
             transform.position = new Vector3(transform.position.x, transform.position.y, 0);
             Move();
-		}
-    }
-
-    IEnumerator TurningWait() {
-        yield return new WaitForSeconds(0.5f);
-        turningL = false;
-		turningR = false;
+        }
     }
 
 	void Move() {
@@ -56,12 +59,23 @@ public class FishBehaviour : MonoBehaviour {
         transform.position = new Vector3(transform.position.x, clampedY, 0);
     }
 
-	void OnTriggerEnter(Collider collider) {
-		if(collider.tag == "WallR") {
-			turningR = true;
-		} else if(collider.tag == "WallL") {
+    void OnTriggerEnter(Collider collider)
+    {
+        CollideWithWall(collider.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        CollideWithWall(collision.collider.gameObject);
+    }
+
+    private void CollideWithWall(GameObject wall) {
+		if (wall.tag == "WallR" && !turningL) {
 			turningL = true;
-		}
-		StartCoroutine(TurningWait());
-	}
+            turnStart = Time.fixedTime;
+        } else if (wall.tag == "WallL" && !turningR) {
+			turningR = true;
+            turnStart = Time.fixedTime;
+        }
+    }    
 }
