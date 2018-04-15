@@ -54,13 +54,10 @@ public class FishBehaviour : MonoBehaviour {
 		// Random vertical mvmt
 		float random = perlinNoiseMultiplicator * (Mathf.PerlinNoise(perlinX, perlinY) - 0.5f);
 		perlinX += Time.fixedDeltaTime;
-        //if(random > -0.2f && random < 0.2f)
-        if (kingly)
-        {
-            random += 0.01f;
-        }
+        //if(random > -0.2f && random < 0.2f)     
         transform.position += speed * random * Vector3.up * Time.fixedDeltaTime;
-        float clampedY = Mathf.Clamp(transform.position.y, Aquarium.GetGroundY(), Aquarium.GetWaterY());
+        float lowerY = kingly ? Aquarium.GetWaterY() - 4f: Aquarium.GetGroundY();
+        float clampedY = Mathf.Clamp(transform.position.y, lowerY, Aquarium.GetWaterY());
         transform.position = new Vector3(transform.position.x, clampedY, 0);
     }
 

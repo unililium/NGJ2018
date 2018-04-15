@@ -32,6 +32,7 @@ GameObject:
   - component: {fileID: 114209336489714390}
   - component: {fileID: 54978804538283794}
   - component: {fileID: 114667255462947562}
+  - component: {fileID: 114128202623176994}
   m_Layer: 0
   m_Name: FishMarine
   m_TagString: Fish
@@ -179,7 +180,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 16
   m_CollisionDetection: 0
 --- !u!65 &65004551059492264
 BoxCollider:
@@ -191,7 +192,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 2}
+  m_Size: {x: 1, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65959678696353100
 BoxCollider:
@@ -217,6 +218,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   youthDuration: 10
+--- !u!114 &114128202623176994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554793467321632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9991e5e41cd6cab498e6986703903337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  averageLunchInterval: 15
+  stop: 0
 --- !u!114 &114209336489714390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -273,6 +287,7 @@ MonoBehaviour:
   perlinNoiseMultiplicator: 1.5
   turningR: 0
   turningL: 0
+  kingly: 0
 --- !u!114 &114667255462947562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -287,7 +302,8 @@ MonoBehaviour:
   speed: 5
   timeToTurn: 0.2
   cooldown: 5
-  climbingHeight: 4
+  climbingHeight: 7
+  patience: 15
   state: 0
 --- !u!114 &114933514282457216
 MonoBehaviour:
@@ -302,6 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEating: 0
   size: 1
+  maxSize: 6
   postEatingBreakDuration: 0.1
   fullnessDecreaseSpeed: 0.02
   minEnergyBeforeDeath: 0
@@ -329,4 +346,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eggPrefab: {fileID: 1522340918722322, guid: 58e090b0784314345ba5d40e76d25a9c, type: 2}
   minDistanceBetweenBirths: 5
-  maxDistanceBetweenBirths: 60
+  maxDistanceBetweenBirths: 30

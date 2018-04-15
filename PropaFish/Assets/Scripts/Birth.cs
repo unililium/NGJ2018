@@ -8,18 +8,18 @@ public class Birth : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        GetComponent<Breed>().enabled = false; // Sexual maturity comes later
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		if (youthDuration > 0)
         {
-            youthDuration -= Time.deltaTime;
-            // TODO Does anything special newborn fish do
+            youthDuration -= Time.deltaTime;            
         }
         else
         {
+            GetComponent<Breed>().enabled = true;
             Destroy(this);
         }
 	}

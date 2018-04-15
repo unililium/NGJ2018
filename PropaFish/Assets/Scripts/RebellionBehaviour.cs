@@ -11,10 +11,16 @@ public class RebellionBehaviour : MonoBehaviour {
 	[Header("Cooldown"), Range(5f, 40f)]
 	public float cooldown;
     public float climbingHeight;
+    public float patience;
 
 	private Vector3 savedPos;
 	private Quaternion savedRot;
     private Quaternion previousRot;
+    private EatFoodScript stomach;
+    private float lastHappyTime;
+    private float previousEnergy;
+
+    private static float mood = 1;
 
     public enum State
     {
@@ -32,6 +38,8 @@ public class RebellionBehaviour : MonoBehaviour {
 
     private void Start()
     {
+        lastHappyTime = Time.time;
+        stomach = GetComponent<EatFoodScript>();
         phaseDuration[State.READY_TO_REBEL] = float.PositiveInfinity;
         phaseDuration[State.TURNING_UPWARDS] = timeToTurn;
         phaseDuration[State.CLIMBING] = float.PositiveInfinity;
@@ -39,7 +47,7 @@ public class RebellionBehaviour : MonoBehaviour {
         phaseDuration[State.DIVING] = float.PositiveInfinity;
         phaseDuration[State.RESTORING_NORMALITY] = timeToTurn;
         phaseDuration[State.CANNOT_REBEL] = cooldown;
-
+        patience += Random.Range(-2f, 2f);
     }
 
     private void To(State newState)
@@ -55,8 +63,9 @@ public class RebellionBehaviour : MonoBehaviour {
         switch (state)
         {
             case State.READY_TO_REBEL:
-                if (Input.GetButtonDown("Fire1"))
+                if (Time.fixedTime - lastHappyTime > patience / RebellionBehaviour.mood || Input.GetButtonDown("Fire1"))
                 {
+                    RebellionBehaviour.mood *= 1.01f;
                     savedPos = transform.position;
                     savedRot = transform.rotation;
                     gameObject.GetComponent<FishBehaviour>().enabled = false;
@@ -122,6 +131,19 @@ public class RebellionBehaviour : MonoBehaviour {
                     To(State.READY_TO_REBEL);
                 }
                 break;
+        }
+    }
+
+    private void Update()
+    {
+        if (stomach.isActiveAndEnabled)
+        {
+            float currentEnergy = stomach.Energy;
+            if (currentEnergy > previousEnergy)
+            {
+                lastHappyTime = Time.time;
+            }
+            previousEnergy = currentEnergy;
         }
     }
 

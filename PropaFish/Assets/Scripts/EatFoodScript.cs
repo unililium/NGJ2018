@@ -6,7 +6,8 @@ public class EatFoodScript : MonoBehaviour {
 
     public bool isEating = false;
 
-    public float size;    
+    public float size;
+    public float maxSize;    
     public float postEatingBreakDuration;
     public float fullnessDecreaseSpeed; // fullness lost per second
     public float minEnergyBeforeDeath;    
@@ -83,7 +84,8 @@ public class EatFoodScript : MonoBehaviour {
         energy += energyIntroduced;
         if (energy > size)
         {
-            size = energy;
+            size = Mathf.Clamp(energy, 0f, maxSize);
+            energy = Mathf.Clamp(energy, 0f, size);
         }
     }
 
