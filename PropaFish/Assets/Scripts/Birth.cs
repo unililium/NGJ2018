@@ -9,6 +9,7 @@ public class Birth : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         GetComponent<Breed>().enabled = false; // Sexual maturity comes later
+        GetComponent<AudioSource>().Play();
     }
 	
 	// Update is called once per frame
