@@ -53,31 +53,49 @@ public class EatFoodScript : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision) {
+    private void OnTriggerEnter(Collider other)
+    {
+        Eat(other.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Eat(collision.collider.gameObject);
+    }
+
+    private void Eat(GameObject food)
+    {
         //If it colllides with food and isnt eating
-        if(!agony && collision.gameObject.tag == "food" && !isEating) {
-            Debug.Log("Food registered");
+        if(!agony && food.gameObject.tag == "food" && !isEating) {
             isEating = true;
-            Nutrient nutrient = collision.gameObject.GetComponent<Nutrient>();
+            Nutrient nutrient = food.GetComponent<Nutrient>();
             if (nutrient)
             {
-                energy += nutrient.energy;
-                if (energy > size)
-                {
-                    size = energy;
-                }
+                AcquireEnergy(nutrient.energy);
             }
-            Destroy(collision.gameObject);
+            Destroy(food);
             StartCoroutine(StopEating());
+        }
+    }
+
+    public void AcquireEnergy(float energyIntroduced)
+    {
+        energy += energyIntroduced;
+        if (energy > size)
+        {
+            size = energy;
         }
     }
 
     public void Die()
     {
-        gameObject.AddComponent<Rigidbody>().useGravity = true;
+        transform.Translate(Vector3.forward * 3);
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<FloatWhileFalling>().enabled = true; // slowly floats down
         GetComponent<HatchOrDecompose>().enabled = true; // and decomposes
         GetComponent<FishBehaviour>().enabled = false; // and stops swimming
+        GetComponent<EatAlge>().stop = true; // and stops eating algae
         GetComponent<Breed>().enabled = false; // and stops reproducing :-S
         Birth youth = GetComponent<Birth>();
         if (youth) { // this is sad :-(

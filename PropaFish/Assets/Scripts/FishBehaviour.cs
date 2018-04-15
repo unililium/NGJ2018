@@ -12,6 +12,8 @@ public class FishBehaviour : MonoBehaviour {
 	public float perlinNoiseMultiplicator;
 	public bool turningR = false;
 	public bool turningL = false;
+    public bool kingly;
+
     float turnStart;
 	float perlinX;
 	float perlinY;
@@ -24,11 +26,10 @@ public class FishBehaviour : MonoBehaviour {
 	void FixedUpdate () {
         if (turningR || turningL)
         {
-            float progress = Mathf.Clamp(Time.fixedTime - turnStart / this.rotationDuration, 0f, 1f);
-            Debug.Log(progress);
+            float progress = Mathf.Clamp((Time.fixedTime - turnStart) / this.rotationDuration, 0f, 1f);            
             if (turningL)
             {
-                transform.rotation = Quaternion.Euler(0, progress * -180, 0);
+                transform.rotation = Quaternion.Euler(0, progress * +180, 0);
             }
             else if (turningR)
             {
@@ -54,6 +55,10 @@ public class FishBehaviour : MonoBehaviour {
 		float random = perlinNoiseMultiplicator * (Mathf.PerlinNoise(perlinX, perlinY) - 0.5f);
 		perlinX += Time.fixedDeltaTime;
         //if(random > -0.2f && random < 0.2f)
+        if (kingly)
+        {
+            random += 0.01f;
+        }
         transform.position += speed * random * Vector3.up * Time.fixedDeltaTime;
         float clampedY = Mathf.Clamp(transform.position.y, Aquarium.GetGroundY(), Aquarium.GetWaterY());
         transform.position = new Vector3(transform.position.x, clampedY, 0);

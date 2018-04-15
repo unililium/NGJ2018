@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEating: 0
   size: 1
-  postEatingBreakDuration: 0.5
+  postEatingBreakDuration: 0.1
   fullnessDecreaseSpeed: 0.02
   minEnergyBeforeDeath: 0
 --- !u!114 &114981195812435014

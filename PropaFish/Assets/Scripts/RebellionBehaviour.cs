@@ -87,7 +87,9 @@ public class RebellionBehaviour : MonoBehaviour {
                 break;
 
             case State.TURNING_DOWNWARDS:
-                transform.rotation = Quaternion.Slerp(savedRot, Quaternion.Euler(0, 0, 270), phaseProgress);
+                transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(previousRot.z, 270, phaseProgress));
+                    
+                    // Quaternion.Slerp(savedRot, Quaternion.Euler(0, 0, 270), phaseProgress);
 
                 if (phaseProgress == 1f)
                 {
@@ -96,9 +98,11 @@ public class RebellionBehaviour : MonoBehaviour {
                 break;
 
             case State.DIVING:
+                GetComponent<Collider>().enabled = false;
                 transform.position = Vector3.MoveTowards(transform.position, savedPos, speed * Time.fixedDeltaTime);
-                if (Mathf.Approximately(transform.position.y, savedPos.y))
+                if (Mathf.Approximately(transform.position.y, savedPos.y) || transform.position.y <= Aquarium.GetGroundY() + 0.5f)
                 {
+                    GetComponent<Collider>().enabled = true;
                     To(State.RESTORING_NORMALITY);
                 }
                 break;
@@ -121,9 +125,14 @@ public class RebellionBehaviour : MonoBehaviour {
         }
     }
 
+    public void LowerSavedPos()
+    {
+        savedPos.y = Mathf.Clamp(savedPos.y - climbingHeight, Aquarium.GetGroundY() + 0.5f, Aquarium.GetWaterY());
+    }
+
     public void DiveDown()
     {
-        float lowerLevel = Mathf.Clamp(savedPos.y, Aquarium.GetGroundY(), savedPos.y - climbingHeight);
+        Debug.Log("DiveDown from " + state);
         switch (state)
         {
             case State.READY_TO_REBEL:
@@ -131,7 +140,7 @@ public class RebellionBehaviour : MonoBehaviour {
                 gameObject.GetComponent<FishBehaviour>().enabled = false;
                 savedRot = transform.rotation;
                 savedPos = transform.position;
-                savedPos.y = lowerLevel;
+                LowerSavedPos();
                 To(State.TURNING_DOWNWARDS);
                 break;
 
@@ -144,11 +153,11 @@ public class RebellionBehaviour : MonoBehaviour {
                 break;
 
             case State.DIVING:
-                savedPos.y = lowerLevel;
+                LowerSavedPos();
                 break;
 
             case State.RESTORING_NORMALITY:
-                savedPos.y = lowerLevel;
+                LowerSavedPos();
                 To(State.TURNING_DOWNWARDS);
                 break;
 

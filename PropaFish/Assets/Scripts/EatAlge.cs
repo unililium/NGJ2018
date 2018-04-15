@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class EatAlge : MonoBehaviour {
 
-    public float startDelay;
-    public float nextDelay;
+    public float averageLunchInterval;
+    public bool stop;
 
-    AlgeStack algeStack;
-
-    bool stop;
+    private float startDelay;
+    private float nextDelay;
+    private EatFoodScript stomach;    
 
 	// Use this for initialization
 	void Start () {
-        startDelay = Random.Range(4.0f, 10.5f);
-        nextDelay = Random.Range(3.0f, 8.5f);
-
-        algeStack = GameObject.Find("AlgeS").GetComponent<AlgeStack>();
+        stomach = GetComponent<EatFoodScript>();
         StartCoroutine(EatTheAlge());
     }
 	
@@ -26,16 +23,15 @@ public class EatAlge : MonoBehaviour {
 	}
 
     IEnumerator EatTheAlge() {
-        yield return new WaitForSeconds(startDelay);
-        while(stop == false) {
-            if(algeStack.algeAmount > 0) {
-                algeStack.algeAmount--;
-                Debug.Log("Eaten once");
-            } else {
-                Debug.Log("No food");
-            }
-            yield return new WaitForSeconds(nextDelay);
-        }
+        do
+        {
+            yield return new WaitForSeconds(Random.Range(0.5f, 1.5f) * averageLunchInterval);
+            if (Aquarium.IsBelowPrivilegeLine(this.gameObject) && AlgeStack.EatOne())
+            {
+                // Debug.Log("Alga eaten by " + this.gameObject.name);
+                stomach.AcquireEnergy(1);
+            }            
+        } while (!stop);
     }
 
 
