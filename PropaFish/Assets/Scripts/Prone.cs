@@ -6,7 +6,8 @@ public class Prone : MonoBehaviour {
 
     private static List<Prone> suckables = new List<Prone>();
     public bool insideSuctionRange;
-    
+
+    public bool hasTriggered;
 
 	// Use this for initialization
 	void Start () {

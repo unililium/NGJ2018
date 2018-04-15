@@ -6,12 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MenuScene.unity
-    guid: 45e20fe84f3514f9198b08656986c098
-  - enabled: 1
-    path: Assets/Scenes/Cycle of Life.unity
-    guid: e675b2abe3e7840c08bceecdda55d7ea
-  - enabled: 1
-    path: Assets/Scenes/EndingScene.unity
-    guid: a6718174ab661438c93a61b04747fe7e
-  m_configObjects: {}
+    path: Assets/Scenes/Cycle of Rebellion.unity
+    guid: 447d2305e06e5514bba3422872abd6a9

@@ -17,6 +17,8 @@ public class EatFoodScript : MonoBehaviour {
     private ShowHunger showHunger;
     private bool agony = false;
 
+    public bool isKing;
+
     public float Energy
     {
         get { return energy; }
@@ -103,10 +105,20 @@ public class EatFoodScript : MonoBehaviour {
         if (youth) { // this is sad :-(
             youth.enabled = false; // and stops being young - or becomes young forever, actually
         }
+
+        if(isKing) {
+            StartCoroutine(KingDead());
+        }
     }
 
     IEnumerator StopEating() {
         yield return new WaitForSeconds(postEatingBreakDuration);
         isEating = false;
+    }
+
+    IEnumerator KingDead() {
+        Debug.Log("King is dead, all hail the rebellion");
+        yield return new WaitForSeconds(6);
+        GameObject.Find("GameController").GetComponent<EndGameScript>().GameOver();
     }
 }
