@@ -62,6 +62,8 @@ public class Suction : MonoBehaviour {
                 orb.GetComponent<FoodAnimScript>().StartFoodAnim(this, energyEaten);
             }
             Destroy(fish); // or whatever object with Prone but containing no energy it may be...
+            //GetComponent<AudioSource>().Play();
+            GetComponents<AudioSource>()[0].Play();
         }
     }
 
@@ -88,6 +90,7 @@ public class Suction : MonoBehaviour {
         {
             energyPerChunk.Enqueue(totalEnergy / foodChunksCount);
         }
+        GetComponents<AudioSource>()[1].Play();
     }
 
     IEnumerator ChunkFood()
