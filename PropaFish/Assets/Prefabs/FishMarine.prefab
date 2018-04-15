@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9991e5e41cd6cab498e6986703903337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  averageLunchInterval: 15
+  averageLunchInterval: 10
   stop: 0
 --- !u!114 &114209336489714390
 MonoBehaviour:
@@ -302,8 +302,8 @@ MonoBehaviour:
   speed: 5
   timeToTurn: 0.2
   cooldown: 5
-  climbingHeight: 7
-  patience: 15
+  climbingHeight: 5
+  patience: 10
   state: 0
 --- !u!114 &114933514282457216
 MonoBehaviour:
@@ -321,7 +321,7 @@ MonoBehaviour:
   maxSize: 6
   postEatingBreakDuration: 0.1
   fullnessDecreaseSpeed: 0.02
-  minEnergyBeforeDeath: 0
+  minEnergyBeforeDeath: 0.05
 --- !u!114 &114981195812435014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,5 +345,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eggPrefab: {fileID: 1522340918722322, guid: 58e090b0784314345ba5d40e76d25a9c, type: 2}
-  minDistanceBetweenBirths: 5
+  minDistanceBetweenBirths: 15
   maxDistanceBetweenBirths: 30

@@ -19,7 +19,10 @@ public class Breed : MonoBehaviour {
 	void Update () {
         if (Time.time > birthDate)
         {
-            MakeABaby();
+            if (GetComponent<EatFoodScript>().Energy > GetComponent<EatFoodScript>().size / 2)
+            {
+                MakeABaby();
+            }
             PlanToMakeABaby();
         }
     }
@@ -27,7 +30,7 @@ public class Breed : MonoBehaviour {
     public void MakeABaby()
     {        
         GameObject egg = Instantiate<GameObject>(eggPrefab, transform.position + Vector3.down, transform.rotation);
-        float babyEnergy = GetComponent<EatFoodScript>().Energy / 3;
+        float babyEnergy = GetComponent<EatFoodScript>().Energy / 2;
         GetComponent<EatFoodScript>().Energy -= babyEnergy;
         egg.GetComponent<Nutrient>().energy = babyEnergy;
     }

@@ -48,6 +48,7 @@ public class RebellionBehaviour : MonoBehaviour {
         phaseDuration[State.RESTORING_NORMALITY] = timeToTurn;
         phaseDuration[State.CANNOT_REBEL] = cooldown;
         patience += Random.Range(-2f, 2f);
+        patience *= 2;
     }
 
     private void To(State newState)
@@ -65,7 +66,8 @@ public class RebellionBehaviour : MonoBehaviour {
             case State.READY_TO_REBEL:
                 if (Time.fixedTime - lastHappyTime > patience / RebellionBehaviour.mood || Input.GetButtonDown("Fire1"))
                 {
-                    RebellionBehaviour.mood *= 1.01f;
+                    RebellionBehaviour.mood *= 1.1f;
+                    lastHappyTime = Time.fixedTime;
                     savedPos = transform.position;
                     savedRot = transform.rotation;
                     gameObject.GetComponent<FishBehaviour>().enabled = false;
