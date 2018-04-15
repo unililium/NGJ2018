@@ -249,7 +249,8 @@ Prefab:
       propertyPath: perlinNoiseMultiplicator
       value: 1.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 54799291865296578, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &220638444
@@ -587,7 +588,8 @@ Prefab:
       propertyPath: turningR
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 54799291865296578, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1055027890 stripped
@@ -735,7 +737,8 @@ Prefab:
       propertyPath: perlinNoiseMultiplicator
       value: 1.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 54799291865296578, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1506800883 stripped
