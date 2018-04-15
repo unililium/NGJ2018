@@ -249,6 +249,16 @@ Prefab:
       propertyPath: perlinNoiseMultiplicator
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114804068141240874, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: speed
+      value: 1.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804068141240874, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: rebellionTimeout
+      value: 2.21
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 54799291865296578, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
@@ -394,6 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6.2
   turnSpeed: 10.24
+  rebellionDuration: 0
   cooldown: 7.8
 --- !u!4 &743296920 stripped
 Transform:
@@ -418,6 +429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6.2
   turnSpeed: 10.24
+  rebellionDuration: 0
   cooldown: 7.8
 --- !u!1 &869094754
 GameObject:
@@ -527,6 +539,11 @@ Prefab:
       propertyPath: m_Name
       value: FishMarine (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114804068141240874, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: speed
+      value: 1.42
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 54799291865296578, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
@@ -587,6 +604,11 @@ Prefab:
         type: 2}
       propertyPath: turningR
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804068141240874, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: speed
+      value: 1.42
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 54799291865296578, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
@@ -737,6 +759,11 @@ Prefab:
       propertyPath: perlinNoiseMultiplicator
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114804068141240874, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: speed
+      value: 1.42
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 54799291865296578, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
@@ -759,6 +786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6.2
   turnSpeed: 10.24
+  rebellionDuration: 2.5
   cooldown: 7.8
 --- !u!1001 &1518593752
 Prefab:
@@ -999,6 +1027,11 @@ Prefab:
     - target: {fileID: 1592134024221594, guid: 6797fe8a6ed5c43e3afeecf5d82d9509, type: 2}
       propertyPath: m_Name
       value: FishMarine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114656922193591518, guid: 6797fe8a6ed5c43e3afeecf5d82d9509,
+        type: 2}
+      propertyPath: speed
+      value: 1.42
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 54028932069045184, guid: 6797fe8a6ed5c43e3afeecf5d82d9509, type: 2}

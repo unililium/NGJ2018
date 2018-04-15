@@ -8,6 +8,8 @@ public class RebellionBehaviour : MonoBehaviour {
 	public float speed;
 	[Header("Rotation speed"), Range(0f, 20f)]
 	public float turnSpeed;
+	[Header("Rebellion duration"), Range(1f, 15f)]
+	public float rebellionDuration;
 	[Header("Cooldown"), Range(5f, 40f)]
 	public float cooldown;
 	private float timeStamp;
@@ -83,7 +85,7 @@ public class RebellionBehaviour : MonoBehaviour {
     }
 
 	IEnumerator RebellionEnd() {
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(rebellionDuration);
 		rebellionStop = false;
 		gameObject.GetComponent<FishBehaviour>().enabled = true;
 	}
