@@ -124,8 +124,10 @@ public class EatFoodScript : MonoBehaviour {
 
     IEnumerator KingDead() {
         Debug.Log("King is dead, all hail the rebellion");
+        GameObject.Find("DeadKing").GetComponent<SpriteRenderer>().enabled = true;
         GetComponents<AudioSource>()[1].Play();
         yield return new WaitForSeconds(6);
+        GameObject.Find("DeadKing").GetComponent<SpriteRenderer>().enabled = false;
         GameObject.Find("GameController").GetComponent<EndGameScript>().GameOver();
     }
 }

@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class BreakingPointLine : MonoBehaviour {
 
-    public int fishPassed;
+    public int totalFishOver;
 
     public bool gameDone;
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(fishPassed >= 5 && gameDone == false) {
+		if(totalFishOver >= 5 && gameDone == false) {
             gameDone = true;
             Debug.Log("VIVA LA REVOLUTION!");
             GetComponent<AudioSource>().Play();
@@ -24,18 +23,33 @@ public class BreakingPointLine : MonoBehaviour {
 	}
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "smallFish" && other.gameObject.name != "Guardian") {
+        if (other.gameObject.tag == "smallFish" && other.gameObject.name != "Guardian" && other.gameObject.name != "King") {
             if(other.gameObject.GetComponent<Prone>().hasTriggered == false) {
                 other.gameObject.GetComponent<Prone>().hasTriggered = true;
-                fishPassed++;
+                totalFishOver++;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject.tag == "smallFish" && other.gameObject.name != "Guardian" && other.gameObject.name != "King") {
+            if (other.gameObject.GetComponent<Prone>().hasTriggered == true) {
+                other.gameObject.GetComponent<Prone>().hasTriggered = false;
+                totalFishOver--;
             }
         }
     }
 
     IEnumerator KingDead() {
         Debug.Log("King is dead, all hail the rebellion");
-        yield return new WaitForSeconds(10);
+        GameObject.Find("Rebel").GetComponent<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(6);
+        GameObject.Find("Rebel").GetComponent<SpriteRenderer>().enabled = false;
         GameObject.Find("GameController").GetComponent<EndGameScript>().GameOver();
+    }
+
+    private void OnGUI() {
+        GUI.Label(new Rect(100, 100 - 35, 200, 80), "Fish over wall: " + totalFishOver);
     }
 
 
