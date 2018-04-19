@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   insideSuctionRange: 0
+  hasTriggered: 0
 --- !u!114 &114262231098502502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d97b5bcfc21984cb79494e1468664b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragInWater: 7
+  dragInWater: 5
   floatingInstability: 10
   floatingRange: 20
   rotationRange: 1

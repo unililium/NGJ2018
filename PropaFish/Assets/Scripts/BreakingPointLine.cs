@@ -49,7 +49,9 @@ public class BreakingPointLine : MonoBehaviour {
     }
 
     private void OnGUI() {
-        GUI.Label(new Rect(100, 100 - 35, 200, 80), "Fish over wall: " + totalFishOver);
+        GUI.color = Color.black;
+        GUI.skin.label.fontSize = 18;
+        GUI.Label(new Rect(100, 100 - 35, 200, 80), "Rebel infiltration: " + totalFishOver + "/5");
     }
 
 

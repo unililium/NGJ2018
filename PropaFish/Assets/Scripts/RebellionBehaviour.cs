@@ -110,6 +110,7 @@ public class RebellionBehaviour : MonoBehaviour {
 
             case State.DIVING:
                 GetComponent<Collider>().enabled = false;
+                Vector3 diveFurther = new Vector3(savedPos.x, savedPos.y - 3f, savedPos.z);
                 transform.position = Vector3.MoveTowards(transform.position, savedPos, speed * Time.fixedDeltaTime);
                 if (Mathf.Approximately(transform.position.y, savedPos.y) || transform.position.y <= Aquarium.GetGroundY() + 0.5f)
                 {
