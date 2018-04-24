@@ -27,8 +27,10 @@ public class HatchOrDecompose : MonoBehaviour {
                     babyFish.name = "Fish born @ " + Time.time;
                     EatFoodScript babyStats = babyFish.GetComponent<EatFoodScript>();
                     babyStats.Energy = this.GetComponent<Nutrient>().energy;
-                    babyFish.transform.localScale /= 2;
-                    babyStats.size /= 2;
+                    babyFish.transform.localScale /= 1.2f;
+                    babyStats.size /= 1.2f;
+                    RebellionBehaviour babyRebel = babyFish.GetComponent<RebellionBehaviour>();
+                    babyRebel.patience = -2;
                     Birth birth = babyFish.GetComponent<Birth>();
                     if (birth)
                     {

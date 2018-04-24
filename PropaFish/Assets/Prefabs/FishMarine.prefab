@@ -999,8 +999,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1554793467321632}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.544022, y: -28.48, z: -15.042698}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 6.3, y: -23.2, z: -15.042698}
   m_LocalScale: {x: 1.2190216, y: 0.213977, z: 0.5187326}
   m_Children:
   - {fileID: 4087097995889782}
@@ -1180,7 +1180,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 2174788ca325c9d46b5f0db5ad93d55c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1376,6 +1376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   insideSuctionRange: 0
+  hasTriggered: 0
 --- !u!114 &114653835163030726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1427,6 +1428,8 @@ MonoBehaviour:
   postEatingBreakDuration: 0.1
   fullnessDecreaseSpeed: 0.02
   minEnergyBeforeDeath: 0.05
+  isKing: 0
+  isGuard: 0
 --- !u!114 &114981195812435014
 MonoBehaviour:
   m_ObjectHideFlags: 1

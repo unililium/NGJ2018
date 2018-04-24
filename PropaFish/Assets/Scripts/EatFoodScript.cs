@@ -111,6 +111,11 @@ public class EatFoodScript : MonoBehaviour {
         if (youth) { // this is sad :-(
             youth.enabled = false; // and stops being young - or becomes young forever, actually
         }
+        if(gameObject.GetComponent<Prone>().hasTriggered) {
+            if(GameObject.Find("BreakingPointLine").GetComponent<BreakingPointLine>().totalFishOver > 0) {
+                GameObject.Find("BreakingPointLine").GetComponent<BreakingPointLine>().totalFishOver--;
+            }
+        }
 
         if(isKing) {
             StartCoroutine(KingDead());

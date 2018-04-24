@@ -72,8 +72,17 @@ public class GuardianFish : MonoBehaviour {
 	/// <param name="other">The other Collider involved in this collision.</param>
 	void OnTriggerEnter(Collider other) {
         RebellionBehaviour rebellion = other.gameObject.GetComponent<RebellionBehaviour>();
-        if (rebellion) {
+      /*  if (rebellion) {
 			rebellion.DiveDown();
-		}
+		} */
+        if(other.gameObject.tag == "smallFish" && other.gameObject.name != "Guardian" && other.gameObject.name != "King") {
+            rebellion.DiveDown();
+            if(other.gameObject.GetComponent<Prone>().hasTriggered) {
+                other.gameObject.GetComponent<Prone>().hasTriggered = false;
+                if (GameObject.Find("BreakingPointLine").GetComponent<BreakingPointLine>().totalFishOver > 0) {
+                    GameObject.Find("BreakingPointLine").GetComponent<BreakingPointLine>().totalFishOver--;
+                }
+            }
+        }
 	}
 }

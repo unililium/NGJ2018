@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   insideSuctionRange: 0
+  hasTriggered: 0
 --- !u!114 &114269866445675478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b409014ed1d5ac409112c308cd8ba28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incubationTime: 4
+  incubationTime: 3
   babyFishPrefab: {fileID: 1554793467321632, guid: 4fb7da432b7f34e4db865bea339feadd,
     type: 2}
 --- !u!114 &114713079766007720

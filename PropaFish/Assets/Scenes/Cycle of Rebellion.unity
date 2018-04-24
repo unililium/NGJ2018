@@ -864,7 +864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b297c875f769304fb2f358e146de1db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 30
   rotationDuration: 0.3
 --- !u!114 &341380098
 MonoBehaviour:
@@ -964,7 +964,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 341380096}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3f45000bb850e9409fb6dd5c49de075, type: 3}
   m_Name: 
@@ -2037,16 +2037,6 @@ Prefab:
       propertyPath: m_Name
       value: FishMarine (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 65004551059492264, guid: 4fb7da432b7f34e4db865bea339feadd,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 23578756209015200, guid: 4fb7da432b7f34e4db865bea339feadd,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2174788ca325c9d46b5f0db5ad93d55c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
   m_IsPrefabParent: 0
@@ -3013,12 +3003,12 @@ Prefab:
     - target: {fileID: 65004551059492264, guid: 4fb7da432b7f34e4db865bea339feadd,
         type: 2}
       propertyPath: m_Size.x
-      value: 1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 65004551059492264, guid: 4fb7da432b7f34e4db865bea339feadd,
         type: 2}
       propertyPath: m_Size.y
-      value: 1
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 65004551059492264, guid: 4fb7da432b7f34e4db865bea339feadd,
         type: 2}
@@ -3052,6 +3042,26 @@ Prefab:
         type: 2}
       propertyPath: isKing
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114981341415676038, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 65959678696353100, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 65959678696353100, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114933514282457216, guid: 4fb7da432b7f34e4db865bea339feadd,
+        type: 2}
+      propertyPath: maxSize
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4fb7da432b7f34e4db865bea339feadd, type: 2}
